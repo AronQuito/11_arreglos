@@ -2,20 +2,27 @@
 using namespace std;
 int main(){
     float TM[7];
-    int p=0,k,DB,TA[7]={10,2,3,4,5,9,2},TB[7]={9,1,2,3,4,8,1};
-    for (int i = 0; i<7; i++){
-        TM[i] = static_cast<float>(TA[i]) / TB[i];
+    int p=0,k,DB,Tmax[7],Tmin[7];
+    for (int i = 0; i <= 6; i++){
+        cout<<"max "<<i+1<<": ";cin>>Tmax[i];
     }
-    DB=TB[0];
+    for (int i = 0; i <= 6; i++){
+        cout<<"min "<<i+1<<": ";cin>>Tmin[i];
+    }
+    for (int i = 0; i<=6; i++){
+        TM[i] = (static_cast<float>(Tmax[i]) + static_cast<float>(Tmin[i]))/2;
+        cout<<TM[i]<<endl;
+    }
+    DB=Tmin[0];
     for (int i = 0; i < 6; i++){
-        if (TB[i]<TB[i+1]){
-            DB=TB[i+1];
+        if (DB<Tmin[i+1]){
+            DB=Tmin[i+1];
         }
     }
     cin>>k;
-    for (int i = 0; i < 7; i++){
-        if (k==TA[i]){
-            p=1;
+    for (int i = 0; i <= 6; i++){
+        if (k==Tmax[i]){
+            p++;
             cout<<"temperatura max Coincide con el dia: "<<i+1<<endl;
         }
     }
